@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="https://prororororgs.ru/">
+    <title>Про программирование</title>
+</head>
+<body>
+{%- macro list_users(list_of_users) -%}
+<ul>
+  {%- for i in list_of_users %}
+  <li>{{ i['name'] }}{{ caller(i) }}</li>
+  {%- endfor -%}
+</ul>
+{% endmacro %}
+
+{% call(users) list_users(users) %}
+   <ul>
+     <li>login: {{ users['login'] }}</li>
+     <li>password: {{ users['password'] }}</li>
+   </ul>
+{%- endcall -%}
+</body>
+</html>
